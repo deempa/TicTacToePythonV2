@@ -21,7 +21,7 @@ class Game:
         self.player2 = player2
         self.player1.set_name(input("First player name: "))
         self.player2.set_name(input("Second player name: "))
-        self.whose_turn_is_it = player1
+        self.whose_turn_is_it = random.choice((player1,player2))
         self.sequence_need = sequence_need
 
     def play(self):
