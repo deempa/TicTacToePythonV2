@@ -53,20 +53,15 @@ class Board:
 
     def get_left_diagonal(self, x, y):
         left_diagonal_array = []
-        if x > y:
-            x -= y
-            y -= y
-        elif x < y:
-            y -= x
-            x -= x
-        else:
-            x -= x
-            y -= y
+        while x > 0 and y > 0:
+            x -= 1
+            y -= 1
 
         while x < self.height and y < self.width:
             left_diagonal_array.append(self.board[x][y])
             x += 1
             y += 1
+            
         return left_diagonal_array
 
     def get_right_diagonal(self, x, y):

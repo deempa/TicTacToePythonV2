@@ -6,9 +6,9 @@ from Board import Board
 
 colorama.init(autoreset=True)
 
-HEIGHT = 7
-WIDTH = 7
-SEQUENCE_NEED = 5
+HEIGHT = 4
+WIDTH = 4
+SEQUENCE_NEED = 2
 X = 'X'
 O = 'O'
 
