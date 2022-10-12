@@ -12,8 +12,8 @@ SEQUENCE_NEED = 2
 
 def main():
     board = Board(HEIGHT, WIDTH)
-    player1 = Player(input("First player name: "), 'X')
-    player2 = Player(input("Second player name: "), 'O')
+    player1 = Player("", 'X')
+    player2 = Player("", 'O')
     tic_tac_toe_game = Game(board, player1, player2, SEQUENCE_NEED)
     tic_tac_toe_game.play()
 

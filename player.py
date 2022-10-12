@@ -1,14 +1,19 @@
 class Player:
     def __init__(self, name, symbol):
-        if name.isalpha():
-            self.__name = name
+        if name.isalpha() and name != "":
+            self.name = name
         else:
-            self.__name = "Default-" + symbol
-        self.__symbol = symbol
+            self.name = "Default-" + symbol
+        self.symbol = symbol
 
-    def getName(self):
-        return self.__name
+    def get_name(self):
+        return self.name
 
-    def getSymbol(self):
-        return self.__symbol
+    def get_symbol(self):
+        return self.symbol
 
+    def set_name(self, name):
+        if name.isalpha() and name != "":
+            self.name = name
+        else:
+            self.name = "Default-" + self.symbol

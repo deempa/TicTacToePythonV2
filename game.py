@@ -19,6 +19,8 @@ class Game:
         self.board = board
         self.player1 = player1
         self.player2 = player2
+        self.player1.set_name(input("First player name: "))
+        self.player2.set_name(input("Second player name: "))
         self.whose_turn_is_it = player1
         self.sequence_need = sequence_need
 
@@ -26,8 +28,8 @@ class Game:
         print_welcome_game()
         self.board.print_board()
         while True:
-            print(f'Current player symbol: {self.whose_turn_is_it.getSymbol()}')
-            print(f'Current player name: {self.whose_turn_is_it.getName()}')
+            print(f'Current player symbol: {self.whose_turn_is_it.get_symbol()}')
+            print(f'Current player name: {self.whose_turn_is_it.get_name()}')
             player_choice = input("Move > ")
             while not player_choice.isdecimal():
                 print("Wrong input or place is already taken.")
@@ -46,7 +48,7 @@ class Game:
 
             print_welcome_game()
 
-            self.board.update_board(player_choice // self.board.height, player_choice % self.board.width, self.whose_turn_is_it.getSymbol())
+            self.board.update_board(player_choice // self.board.height, player_choice % self.board.width, self.whose_turn_is_it.get_symbol())
 
             self.board.print_board()
 
@@ -55,7 +57,7 @@ class Game:
                 print_welcome_game()
                 self.board.print_board()
                 print(
-                    Back.WHITE + Fore.BLACK + f"\nThe winner is {self.whose_turn_is_it.getSymbol()} ! \nWell Done {self.whose_turn_is_it.getName()} ")
+                    Back.WHITE + Fore.BLACK + f"\nThe winner is {self.whose_turn_is_it.get_symbol()} ! \nWell Done {self.whose_turn_is_it.get_name()} ")
                 print_goodbye()
                 break
 
@@ -83,7 +85,7 @@ class Game:
     def check_if_row_win(self, x):
         sequence = 0
         for element in self.board.get_row(x):
-            if element == self.whose_turn_is_it.getSymbol():
+            if element == self.whose_turn_is_it.get_symbol():
                 sequence += 1
             else:
                 sequence = 0
@@ -94,7 +96,7 @@ class Game:
     def check_if_col_win(self, y):
         sequence = 0
         for element in self.board.get_col(y):
-            if element == self.whose_turn_is_it.getSymbol():
+            if element == self.whose_turn_is_it.get_symbol():
                 sequence += 1
             else:
                 sequence = 0
@@ -105,7 +107,7 @@ class Game:
     def check_if_left_diagonal_win(self, x, y):
         sequence = 0
         for element in self.board.get_left_diagonal(x, y):
-            if element == self.whose_turn_is_it.getSymbol():
+            if element == self.whose_turn_is_it.get_symbol():
                 sequence += 1
             else:
                 sequence = 0
@@ -116,7 +118,7 @@ class Game:
     def check_if_right_diagonal_win(self, x, y):
         sequence = 0
         for element in self.board.get_right_diagonal(x, y):
-            if element == self.whose_turn_is_it.getSymbol():
+            if element == self.whose_turn_is_it.get_symbol():
                 sequence += 1
             else:
                 sequence = 0
