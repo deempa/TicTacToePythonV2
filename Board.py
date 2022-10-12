@@ -1,57 +1,57 @@
 class Board:
     def __init__(self, height, width, symbols=('X', 'O')):
-        self.__height = height
-        self.__width = width
-        self.__board = self.boardInit()
+        self.height = height
+        self.width = width
+        self.board = self.board_init()
         self.symbols = symbols
 
-    def boardInit(self):
-        return [["%d" % (x * self.__height + y) for y in range(self.__width)] for x in range(self.__height)]
+    def board_init(self):
+        return [["%d" % (x * self.height + y) for y in range(self.width)] for x in range(self.height)]
 
-    def getBoard(self):
-        return self.__board
+    def get_board(self):
+        return self.board
 
-    def printBoard(self):
-        for i in range(self.__height):
+    def print_board(self):
+        for i in range(self.height):
             print("%10s" % "", end="")
-            for j in range(self.__width):
-                if j == self.__width - 1:
-                    print("%3s" % self.__board[i][j], end="")
+            for j in range(self.width):
+                if j == self.width - 1:
+                    print("%3s" % self.board[i][j], end="")
                 else:
-                    print("%3s   | " % self.__board[i][j], end="")
+                    print("%3s   | " % self.board[i][j], end="")
             print()
 
-    def updateBoard(self, x, y, symbol):
-        self.__board[x][y] = symbol
+    def update_board(self, x, y, symbol):
+        self.board[x][y] = symbol
 
-    def placeIsValid(self, x, y):
-        if x < 0 or y < 0 or x >= self.__height or y >= self.__width:
+    def is_place_valid(self, x, y):
+        if x < 0 or y < 0 or x >= self.height or y >= self.width:
             return False
         # if self.__board[x][y] == 'X' or self.__board[x][y] == 'O':
-        if self.__board[x][y] in self.symbols:
+        if self.board[x][y] in self.symbols:
             return False
         return True
 
-    def boardIsFull(self):
-        for i in range(self.__height):
-            for j in range(self.__height):
-                if self.__board[i][j] not in self.symbols:
+    def is_board_full(self):
+        for i in range(self.height):
+            for j in range(self.height):
+                if self.board[i][j] not in self.symbols:
                     return False
         return True
 
-    def getRow(self, row):
+    def get_row(self, row):
         row_array = []
-        for col_number in range(self.__width):
-            row_array.append(self.__board[row][col_number])
+        for col_number in range(self.width):
+            row_array.append(self.board[row][col_number])
         return row_array
 
-    def getCol(self, col):
+    def get_col(self, col):
         col_array = []
-        for row_number in range(self.__height):
-            col_array.append(self.__board[row_number][col])
+        for row_number in range(self.height):
+            col_array.append(self.board[row_number][col])
         return col_array
 
-    def getLeftDiagonal(self, x, y):
+    def get_left_diagonal(self, x, y):
         left_diagonal_array = []
         if x > y:
             x -= y
@@ -63,17 +63,17 @@ class Board:
             x -= x
             y -= y
 
-        while x < self.__height and y < self.__width:
-            left_diagonal_array.append(self.__board[x][y])
+        while x < self.height and y < self.width:
+            left_diagonal_array.append(self.board[x][y])
             x += 1
             y += 1
         return left_diagonal_array
 
-    def getRightDiagonal(self, x, y):
+    def get_right_diagonal(self, x, y):
         right_diagonal_array = []
         x, y = y, x
-        while x < self.__height and y < self.__width:
-            right_diagonal_array.append(self.__board[y][x])
+        while x < self.height and y < self.width:
+            right_diagonal_array.append(self.board[y][x])
             x += 1
             y -= 1
         return right_diagonal_array

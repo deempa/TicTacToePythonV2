@@ -20,7 +20,7 @@ def main():
     player2 = Player(input("Second player name: "), O)
     who_is_turn = player1
     welcome()
-    board.printBoard()
+    board.print_board()
     while True:
         print()
         print(f'Current player symbol: {who_is_turn.getSymbol()}')
@@ -32,7 +32,7 @@ def main():
             player_choice = input("Move > ")
         player_choice = int(player_choice)
 
-        while not board.placeIsValid(player_choice // HEIGHT, player_choice % WIDTH):
+        while not board.is_place_valid(player_choice // HEIGHT, player_choice % WIDTH):
             print("Wrong input or place is already taken.")
             player_choice = input("Move > ")
             while not player_choice.isdecimal():
@@ -43,21 +43,21 @@ def main():
 
         welcome()
 
-        board.updateBoard(player_choice // HEIGHT, player_choice % WIDTH, who_is_turn.getSymbol())
+        board.update_board(player_choice // HEIGHT, player_choice % WIDTH, who_is_turn.getSymbol())
 
-        board.printBoard()
+        board.print_board()
 
         # Check if someone won after the last move
         if checkIfWin(board, player_choice // HEIGHT, player_choice % WIDTH, who_is_turn.getSymbol()):
             welcome()
-            board.printBoard()
+            board.print_board()
             print(
                 Back.WHITE + Fore.BLACK + f"\nThe winner is {who_is_turn.getSymbol()} ! \nWell Done {who_is_turn.getName()} ")
             goodBye()
             break
 
         # Check if Tie
-        if board.boardIsFull():
+        if board.is_board_full():
             print("Tie Game! ")
             goodBye()
             break
@@ -76,7 +76,7 @@ def checkIfWin(board, x, y, symbol):
 
 def checkIfRowWin(board, x, symbol):
     sequence = 0
-    for element in board.getRow(x):
+    for element in board.get_row(x):
         if element == symbol:
             sequence += 1
         else:
@@ -88,7 +88,7 @@ def checkIfRowWin(board, x, symbol):
 
 def checkIfColWin(board, y, symbol):
     sequence = 0
-    for element in board.getCol(y):
+    for element in board.get_col(y):
         if element == symbol:
             sequence += 1
         else:
@@ -100,7 +100,7 @@ def checkIfColWin(board, y, symbol):
 
 def checkIfLeftDiagonalWin(board, x, y, symbol):
     sequence = 0
-    for element in board.getLeftDiagonal(x, y):
+    for element in board.get_left_diagonal(x, y):
         if element == symbol:
             sequence += 1
         else:
@@ -112,7 +112,7 @@ def checkIfLeftDiagonalWin(board, x, y, symbol):
 
 def checkIfRightDiagonalWin(board, x, y, symbol):
     sequence = 0
-    for element in board.getRightDiagonal(x, y):
+    for element in board.get_right_diagonal(x, y):
         if element == symbol:
             sequence += 1
         else:
