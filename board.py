@@ -27,7 +27,6 @@ class Board:
     def is_place_valid(self, x, y):
         if x < 0 or y < 0 or x >= self.height or y >= self.width:
             return False
-        # if self.__board[x][y] == 'X' or self.__board[x][y] == 'O':
         if self.board[x][y] in self.symbols:
             return False
         return True
@@ -61,7 +60,7 @@ class Board:
             left_diagonal_array.append(self.board[x][y])
             x += 1
             y += 1
-            
+
         return left_diagonal_array
 
     def get_right_diagonal(self, x, y):
@@ -71,4 +70,5 @@ class Board:
             right_diagonal_array.append(self.board[y][x])
             x += 1
             y -= 1
+
         return right_diagonal_array
