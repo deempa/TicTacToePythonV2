@@ -1,8 +1,9 @@
 class Board:
-    def __init__(self, height, width):
+    def __init__(self, height, width, symbols=('X', 'O')):
         self.__height = height
         self.__width = width
         self.__board = self.boardInit()
+        self.symbols = symbols
 
     def boardInit(self):
         return [["%d" % (x * self.__height + y) for y in range(self.__width)] for x in range(self.__height)]
@@ -26,14 +27,15 @@ class Board:
     def placeIsValid(self, x, y):
         if x < 0 or y < 0 or x >= self.__height or y >= self.__width:
             return False
-        if self.__board[x][y] == 'X' or self.__board[x][y] == 'O':
+        # if self.__board[x][y] == 'X' or self.__board[x][y] == 'O':
+        if self.__board[x][y] in self.symbols:
             return False
         return True
 
     def boardIsFull(self):
         for i in range(self.__height):
             for j in range(self.__height):
-                if self.__board[i][j] != 'X' and self.__board[i][j] != 'O':
+                if self.__board[i][j] not in self.symbols:
                     return False
         return True
 
