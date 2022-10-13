@@ -21,7 +21,7 @@ class Game:
         self.player2 = player2
         self.player1.set_name(input("First player name: "))
         self.player2.set_name(input("Second player name: "))
-        self.whose_turn_is_it = random.choice((player1,player2))
+        self.whose_turn_is_it = random.choice((player1, player2))
         self.sequence_need = sequence_need
 
     def play(self):
@@ -31,20 +31,8 @@ class Game:
             print(f'Current player symbol: {self.whose_turn_is_it.get_symbol()}')
             print(f'Current player name: {self.whose_turn_is_it.get_name()}')
             player_choice = input("Move > ")
-            while not player_choice.isdecimal():
-                print("Wrong input or place is already taken.")
-                player_choice = input("Move > ")
 
-            player_choice = int(player_choice)
-
-            while not self.board.is_place_valid(player_choice // self.board.height, player_choice % self.board.width):
-                print("Wrong input or place is already taken.")
-                player_choice = input("Move > ")
-                while not player_choice.isdecimal():
-                    print("Wrong input or place is already taken.")
-                    player_choice = input("Move > ")
-
-                player_choice = int(player_choice)
+            player_choice = self.check_and_return_valid_choice(player_choice)
 
             print_welcome_game()
 
@@ -68,6 +56,22 @@ class Game:
                 break
 
             self.switch_turn()
+
+    def check_and_return_valid_choice(self, player_choice):
+        while not player_choice.isdecimal():
+            print("Wrong input or place is already taken.")
+            player_choice = input("Move > ")
+        player_choice = int(player_choice)
+        while not self.board.is_place_valid(player_choice // self.board.height, player_choice % self.board.width):
+            print("Wrong input or place is already taken.")
+            player_choice = input("Move > ")
+            while not player_choice.isdecimal():
+                print("Wrong input or place is already taken.")
+                player_choice = input("Move > ")
+
+            player_choice = int(player_choice)
+
+        return player_choice
 
     def switch_turn(self):
         if self.whose_turn_is_it == self.player1:
