@@ -89,10 +89,7 @@ class Game:
     def check_if_row_win(self, x):
         sequence = 0
         for element in self.board.get_row(x):
-            if element == self.whose_turn_is_it.get_symbol():
-                sequence += 1
-            else:
-                sequence = 0
+            sequence += 1 if element == self.whose_turn_is_it.get_symbol() else 0
             if sequence >= self.sequence_need:
                 return True
         return False
@@ -100,10 +97,7 @@ class Game:
     def check_if_col_win(self, y):
         sequence = 0
         for element in self.board.get_col(y):
-            if element == self.whose_turn_is_it.get_symbol():
-                sequence += 1
-            else:
-                sequence = 0
+            sequence += 1 if element == self.whose_turn_is_it.get_symbol() else 0
             if sequence >= self.sequence_need:
                 return True
         return False
@@ -111,10 +105,7 @@ class Game:
     def check_if_left_diagonal_win(self, x, y):
         sequence = 0
         for element in self.board.get_left_diagonal(x, y):
-            if element == self.whose_turn_is_it.get_symbol():
-                sequence += 1
-            else:
-                sequence = 0
+            sequence += 1 if element == self.whose_turn_is_it.get_symbol() else 0
             if sequence >= self.sequence_need:
                 return True
         return False
@@ -122,10 +113,7 @@ class Game:
     def check_if_right_diagonal_win(self, x, y):
         sequence = 0
         for element in self.board.get_right_diagonal(x, y):
-            if element == self.whose_turn_is_it.get_symbol():
-                sequence += 1
-            else:
-                sequence = 0
+            sequence += 1 if element == self.whose_turn_is_it.get_symbol() else 0
             if sequence >= self.sequence_need:
                 return True
         return False
