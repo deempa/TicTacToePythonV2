@@ -74,10 +74,7 @@ class Game:
         return player_choice
 
     def switch_turn(self):
-        if self.whose_turn_is_it == self.player1:
-            self.whose_turn_is_it = self.player2
-        else:
-            self.whose_turn_is_it = self.player1
+        self.whose_turn_is_it = self.player2 if self.whose_turn_is_it == self.player1 else self.player1
 
     def check_if_win(self, x, y):
         if self.check_if_row_win(x) or self.check_if_col_win(y):
