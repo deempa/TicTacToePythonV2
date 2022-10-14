@@ -36,7 +36,8 @@ class Game:
 
             print_welcome_game()
 
-            self.board.update_board(player_choice // self.board.height, player_choice % self.board.width, self.whose_turn_is_it.get_symbol())
+            self.board.update_board(player_choice // self.board.height, player_choice % self.board.width,\
+                                    self.whose_turn_is_it.get_symbol())
 
             self.board.print_board()
 
