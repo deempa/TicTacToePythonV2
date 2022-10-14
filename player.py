@@ -11,7 +11,4 @@ class Player:
         return self.symbol
 
     def set_name(self, name):
-        if name.isalpha() and name != "":
-            self.name = name
-        else:
-            self.name = "Default-" + self.symbol
+        self.name = name if name.isalpha() and name != "" else "Default-" + self.symbol
