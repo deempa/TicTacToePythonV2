@@ -1,12 +1,15 @@
 class Board:
-    def __init__(self, height, width, symbols=('X', 'O')):
+    def __init__(self, height, width, symbols=("X", "O")):
         self.height = height
         self.width = width
         self.board = self.board_init()
         self.symbols = symbols
 
     def board_init(self):
-        return [["%d" % (x * self.height + y) for y in range(self.width)] for x in range(self.height)]
+        return [
+            ["%d" % (x * self.height + y) for y in range(self.width)]
+            for x in range(self.height)
+        ]
 
     def get_board(self):
         return self.board
