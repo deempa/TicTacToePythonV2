@@ -4,9 +4,9 @@ from board import Board
 from game import Game
 
 colorama.init(autoreset=True)
-HEIGHT = 3
-WIDTH = 3
-SEQUENCE_NEED = 3
+HEIGHT = 7
+WIDTH = 7
+SEQUENCE_NEED = 5
 
 
 def main():

@@ -42,11 +42,13 @@ class Board:
         return True
 
     def get_row(self, row):
-        row_array = [self.board[row][col_number] for col_number in range(self.width)]
+        row_array = [self.board[row][col_number]
+                     for col_number in range(self.width)]
         return row_array
 
     def get_col(self, col):
-        col_array = [self.board[row_number][col] for row_number in range(self.height)]
+        col_array = [self.board[row_number][col]
+                     for row_number in range(self.height)]
         return col_array
 
     def get_left_diagonal(self, x, y):

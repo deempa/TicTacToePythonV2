@@ -28,7 +28,8 @@ class Game:
         print_welcome_game()
         self.board.print_board()
         while True:
-            print(f"Current player symbol: {self.whose_turn_is_it.get_symbol()}")
+            print(
+                f"Current player symbol: {self.whose_turn_is_it.get_symbol()}")
             print(f"Current player name: {self.whose_turn_is_it.get_name()}")
             player_choice = input("Move > ")
 
